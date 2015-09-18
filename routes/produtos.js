@@ -130,5 +130,7 @@ router.get('/delete/:id',function(req,res){
             res.redirect('/produtos/listprodutos');
             console.log('Deletado com sucesso!');
         }
-    });
-});
+    }); 
+ });
+});  
+
