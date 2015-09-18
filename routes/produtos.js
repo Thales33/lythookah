@@ -8,11 +8,11 @@ var pg = require('pg');
 
 
 router.get('/', function(req, res, next) {
-	res.render('produtos/homeprodutos', {
-		title: 'Produtos - LYT Hookah',
-		subtitle: 'Produtos'
-	})
- });
+  res.render('produtos/homeprodutos', {
+    title: 'Produtos - LYT Hookah',
+    subtitle: 'Produtos'
+  })
+});
 
 router.get('/listprodutos', function(req, res) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
@@ -27,25 +27,25 @@ router.get('/listprodutos', function(req, res) {
     });
   });
 });
-	
-	/*var results = [];
-	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  
+  /*var results = [];
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
       var query = client.query("SELECT * FROM LYTHOOKAH.PRODUTOS ORDER BY ASC;");
       query.on('row', function  (row) {
-      	results.push(row);
+        results.push(row);
       });
       query.on('end', function () {
-      	client.end();
-      	return res.json(results);
+        client.end();
+        return res.json(results);
       });
       if(err) {
-      	console.log(err);
+        console.log(err);
       }
  });
 });*/
 
 router.get('/add', function(req,res){
-	res.render('produto/addProduto', {title: 'Cadastrar Novo Produto'});
+  res.render('produto/addProduto', {title: 'Cadastrar Novo Produto'});
 });
 
 
@@ -66,7 +66,7 @@ router.post('/add', function(req, res){
                  precoVenda: req.body.precoVenda,
                  tipo: req.body.tipo,
                  marca: req.body.marca }
-pg.connect(process.env.DATABASE_URL, function(err, client, done){
+  pg.connect(process.env.DATABASE_URL, function(err, client, done){
     client.query('INSERT INTO PRODUTOS (descricao,precoCusto,precoVenda,tipo,marca) VALUES ($1,$2,$3,$4,$5)', [retorno.descricao, retorno.precoCusto, retorno.precoVenda, retorno.tipo, retorno.marca], function(err, result) {
     done();
     if (err){
@@ -81,12 +81,12 @@ router.get('/editar/:id', function(req, res) {
   var id = req.params.id;
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT * FROM PRODUTOS WHERE id = $1',[id], function(err, result) {
+   client.query('SELECT * FROM PRODUTOS WHERE id = $1',[id], function(err, result) {
 
       done();
       if (err){
       console.log(err);
-    }
+      }
 
     res.render('produtos/editarProdutos',{
       produtos : result,
@@ -125,12 +125,10 @@ router.get('/delete/:id',function(req,res){
         if(err){
             console.log(err);
             res.send('Erro ao Deletar Usuario do Banco de Dados')
-        } else{
-            
-            res.redirect('/produtos/listprodutos');
-            console.log('Deletado com sucesso!');
-        }
-    }); 
- });
+        }           
+        res.redirect('/produtos/listprodutos');
+        console.log('Deletado com sucesso!');
+        
+      }); 
+    });
 });  
-
