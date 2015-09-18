@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+    h1= title
+    div(class="form-group")
+        form#formAddProduto(name="addproduto",method="post",action="/produto/add")
+            input#inputProdutoDescricao(type="text", class="form-control", placeholder="Descrição", name="descricao")
+            br
+            input#inputProdutoPrecoCusto(type="text", class="form-control", placeholder="Preco de Custo", name="precoCusto")
+            br
+            input#inputProdutoPrecoVenda(type="text", class="form-control", placeholder="Preço de Venda", name="precoVenda")
+            br
+            input#inputProdutoTipo(type="text", class="form-control", placeholder="Tipo", name="tipo")
+            br
+            input#inputProdutoMarca(type="text", class="form-control", placeholder="Marca", name="marca")
+            br
+            
+            
+            button#btnSubmit(type="submit", class="btn btn-primary") Cadastrar
