@@ -81,7 +81,7 @@ router.get('/editar/:id', function(req, res) {
   var id = req.params.id;
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT * FROM PRODUTOS WHERE id = $1',[id] function(err, result) 
+    client.query('SELECT * FROM PRODUTOS WHERE id = $1',[id], function(err, result) 
       done();
       if (err){
       console.log(err);
@@ -93,7 +93,7 @@ router.get('/editar/:id', function(req, res) {
     })
         });
 
-router.post('/editarProdutos', isLoggedIn,function(req,res){
+router.post('/editarProdutos', function(req,res){
     var idproduto = req.body.idproduto;
      var retorno = {descricao: req.body.descricao,
                  precoCusto: req.body.precoCusto,
