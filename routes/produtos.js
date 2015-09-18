@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 
-var conString = "process.env.DATABASE_URL";
+var conString = process.env.DATABASE_URL;
 // var conString = "postgres://postgres:ankit1234@localhost:5432/nodedb_development";
 var connection = new pg.Client(conString);
 // Connect PostgreSQL
