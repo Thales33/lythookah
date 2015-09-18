@@ -75,6 +75,7 @@ router.post('/add', function(req, res){
     res.redirect('/produtos/listprodutos');
 
   });
+ });
 });
 
 router.get('/editar/:id', function(req, res) {
@@ -113,22 +114,21 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done){
     }
     res.redirect('/produtos/listprodutos');
   });
+ });
 });
-
 router.get('/delete/:id',function(req,res){
     
-    var id = req.params.id;
-    
+    var id = req.params.id;    
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
     client.query("DELETE FROM PRODUTOS WHERE id = $1",[id],function(err){
       done();
         if(err){
             console.log(err);
-            res.send('Erro ao Deletar Usuario do Banco de Dados')
         }           
         res.redirect('/produtos/listprodutos');
         console.log('Deletado com sucesso!');
         
       }); 
     });
-});  
+  });
+ 
