@@ -28,36 +28,11 @@ router.get('/listprodutos', function(req, res) {
   });
 });
   
-  /*var results = [];
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-      var query = client.query("SELECT * FROM LYTHOOKAH.PRODUTOS ORDER BY ASC;");
-      query.on('row', function  (row) {
-        results.push(row);
-      });
-      query.on('end', function () {
-        client.end();
-        return res.json(results);
-      });
-      if(err) {
-        console.log(err);
-      }
- });
-});*/
+  
 
 router.get('/add', function(req,res){
-  res.render('produto/addProduto', {title: 'Cadastrar Novo Produto'});
+  res.render('produtos/addProduto', {title: 'Cadastrar Novo Produto'});
 });
-
-
-/*app.post("/users", function (req, res) {
-  var name=req.body.name;
-  var email=req.body.email;
-  var des=req.body.des;
-  
-  connection.query('INSERT INTO users (name,email,des) VALUES ($1,$2,$3) RETURNING id', [name, email, des], function(err, docs) {
-    res.redirect('/');
-  });
-});*/
 
 
 router.post('/add', function(req, res){
