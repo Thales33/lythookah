@@ -35,7 +35,7 @@ router.get('/addProduto', function(req,res){
 });
 
 
-router.post('/addProduto', function(req, res){
+router.post('/add', function(req, res){
   var retorno = {id: req.body.id,
                  descricao: req.body.descricao,
                  precoCusto: req.body.precoCusto,
@@ -48,10 +48,9 @@ router.post('/addProduto', function(req, res){
     if (err){
       console.log(err);
     }
-    
+    res.redirect('/produtos/listprodutos');
   });
- });
-  res.redirect('/produtos/listprodutos');
+ });  
 });
 
 router.get('/editar/:id', function(req, res) {
