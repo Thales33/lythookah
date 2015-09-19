@@ -48,7 +48,7 @@ router.post('/addProduto', function(req, res){
     if (err){
       console.log(err);
     }
-    res.redirect('/listprodutos');
+    res.redirect('/produtos/listprodutos');
 
   });
  });
@@ -92,6 +92,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done){
   });
  });
 });
+
 router.get('/delete/:id',function(req,res){
     
     var id = req.params.id;    
