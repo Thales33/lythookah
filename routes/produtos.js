@@ -48,7 +48,7 @@ router.post('/addProduto', function(req, res){
     if (err){
       console.log(err);
     }
-    res.redirect('/produtos/listprodutos');
+    res.redirect('/listprodutos');
 
   });
  });
