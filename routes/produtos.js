@@ -36,13 +36,14 @@ router.get('/add', function(req,res){
 
 
 router.post('/add', function(req, res){
-  var retorno = {descricao: req.body.descricao,
+  var retorno = {id: req.body.id,
+                 descricao: req.body.descricao,
                  precoCusto: req.body.precoCusto,
                  precoVenda: req.body.precoVenda,
                  tipo: req.body.tipo,
                  marca: req.body.marca }
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('INSERT INTO PRODUTOS (descricao,precoCusto,precoVenda,tipo,marca) VALUES ($1,$2,$3,$4,$5)', [retorno.descricao, retorno.precoCusto, retorno.precoVenda, retorno.tipo, retorno.marca], function(err, result) {
+    client.query('INSERT INTO PRODUTOS (id, descricao,precoCusto,precoVenda,tipo,marca) VALUES ($1,$2,$3,$4,$5)', [retorno.descricao, retorno.precoCusto, retorno.precoVenda, retorno.tipo, retorno.marca], function(err, result) {
     done();
     if (err){
       console.log(err);
