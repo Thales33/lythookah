@@ -30,12 +30,12 @@ router.get('/listprodutos', function(req, res) {
   
   
 
-router.get('/add', function(req,res){
+router.get('/addProduto', function(req,res){
   res.render('produtos/addProduto', {title: 'Cadastrar Novo Produto'});
 });
 
 
-router.post('/add', function(req, res){
+router.post('/addProduto', function(req, res){
   var retorno = {id: req.body.id,
                  descricao: req.body.descricao,
                  precoCusto: req.body.precoCusto,
