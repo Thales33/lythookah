@@ -85,7 +85,7 @@ router.post('/editarProdutos', function(req,res){
   var marca = req.body.marca;
 
 pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('UPDATE PRODUTOS SET (descricao = $1, precocusto = $2,precovenda = $3,tipo = $4, marca = $5) WHERE id = $6', [descricao, precocusto, precovenda, tipo, marca, idproduto], function(err, result) {
+    client.query('UPDATE PRODUTOS SET (descricao = ($1), precocusto = ($2),precovenda = ($3),tipo = ($4), marca = ($5) WHERE id = $6', [descricao, precocusto, precovenda, tipo, marca, idproduto], function(err, result) {
     done();
     if (err){
       console.log(err);
