@@ -79,8 +79,8 @@ router.get('/editar/:id', function(req, res) {
 router.post('/editarProdutos', function(req,res){
     var idproduto = req.body.idproduto;
   var descricao = req.body.descricao;
-  var precocusto = req.body.precocusto;
-  var precovenda = req.body.precovenda;
+  var precocusto = req.body.precoCusto;
+  var precovenda = req.body.precoVenda;
   var tipo = req.body.tipo;
   var marca = req.body.marca;
 
