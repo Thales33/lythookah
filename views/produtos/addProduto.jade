@@ -4,17 +4,17 @@ block content
     h1= title
     div(class="form-group")
         form#formAddProduto(name="addproduto",method="post",action="/produtos/add")
-            input#inputProdutoId(type="text", class="form-control", placeholder="ID", name="id")
+            input#inputProdutoId(type="text", class="form-control", placeholder="ID", name="id", required="")
             br
-            input#inputProdutoDescricao(type="text", class="form-control", placeholder="Descrição", name="descricao")
+            input#inputProdutoDescricao(type="text", class="form-control", placeholder="Descrição", name="descricao", required="")
             br
-            input#inputProdutoPrecoCusto(type="text", class="form-control", placeholder="Preco de Custo", name="precocusto")
+            input#inputProdutoPrecoCusto(type="text", class="form-control", placeholder="Preco de Custo", name="precocusto", required="")
             br
-            input#inputProdutoPrecoVenda(type="text", class="form-control", placeholder="Preço de Venda", name="precovenda")
+            input#inputProdutoPrecoVenda(type="text", class="form-control", placeholder="Preço de Venda", name="precovenda", required="")
             br
-            input#inputProdutoTipo(type="text", class="form-control", placeholder="Tipo", name="tipo")
+            input#inputProdutoTipo(type="text", class="form-control", placeholder="Tipo", name="tipo", required="")
             br
-            input#inputProdutoMarca(type="text", class="form-control", placeholder="Marca", name="marca")
+            input#inputProdutoMarca(type="text", class="form-control", placeholder="Marca", name="marca", required="")
             br          
             
             button#btnSubmit(type="submit", class="btn btn-primary") Cadastrar

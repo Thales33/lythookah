@@ -47,7 +47,7 @@ router.post('/add', function(req, res){
     done();
     if (err){
       console.log(err);
-      res.send('Erro ao adicionar Usuario ao Banco de Dados');
+      res.send('Erro ao adicionar Produto ao Banco de Dados');
     }else{
      res.redirect('/produtos/listprodutos');
      }
@@ -56,17 +56,16 @@ router.post('/add', function(req, res){
 });
 
 router.get('/editar/:id', function(req, res) {
-  var id = req.params.id;
 
+  var id = req.body.id;
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
    client.query('SELECT * FROM PRODUTOS WHERE id = $1',[id], function(err, result) {
-
       done();
       if (err){
       console.log(err);
       }
 
-    res.render('produtos/editarProdutos',{
+      res.render('produtos/editarProdutos',{
       produtos : result,
       title: 'Editar Produto'
     });
