@@ -78,14 +78,14 @@ router.get('/editar/:id', function(req, res) {
 
 router.post('/editarProdutos', function(req,res){
     var idproduto = req.body.idproduto;
-     var retorno = {descricao: req.body.descricao,
-                 precoCusto: req.body.precoCusto,
-                 precoVenda: req.body.precoVenda,
-                 tipo: req.body.tipo,
-                 marca: req.body.marca}
+  var descricao = req.body.descricao;
+  var precocusto = req.body.precocusto;
+  var precovenda = req.body.precovenda;
+  var tipo = req.body.tipo;
+  var marca = req.body.marca;
 
 pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('UPDATE PRODUTOS SET $1 WHERE id = $2', [retorno, idproduto], function(err, result) {
+    client.query('UPDATE PRODUTOS SET (descricao = $1, precocusto = $2,precovenda = $3,tipo = $4, marca = $5) WHERE id = $6', [descricao, precocusto, precovenda, tipo, marca, idproduto], function(err, result) {
     done();
     if (err){
       console.log(err);
