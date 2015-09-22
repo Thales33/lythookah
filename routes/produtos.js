@@ -38,8 +38,8 @@ router.get('/addProduto', function(req,res){
 router.post('/add', function(req, res){
   var id = req.body.id;
   var descricao = req.body.descricao;
-  var precoCusto = req.body.precocusto;
-  var precoVenda = req.body.precovenda;
+  var precocusto = req.body.precocusto;
+  var precovenda = req.body.precovenda;
   var tipo = req.body.tipo;
   var marca = req.body.marca;
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
@@ -50,8 +50,7 @@ router.post('/add', function(req, res){
       res.send('Erro ao adicionar Usuario ao Banco de Dados');
     }else{
      res.redirect('/produtos/listprodutos');
-     console.log('Usuario ' + nome + ' Adicionado ao Banco de Dados');
-    }
+     }
   });
  });  
 });
