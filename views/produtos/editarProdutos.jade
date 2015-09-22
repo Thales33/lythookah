@@ -3,7 +3,7 @@ extends ../layout
 block content
     h1= title
     div(class="form-group")
-        form#formAddProduto(name="addproduto",method="post",action="/produto/editarProdutos")
+        form#formAddProduto(name="addproduto",method="post",action="/produtos/editarProdutos")
             input#inputProdutoDescricao(type="text", class="form-control", placeholder="Descrição", name="descricao")
             br
             input#inputProdutoPrecoCusto(type="text", class="form-control", placeholder="Preco de Custo", name="precoCusto")

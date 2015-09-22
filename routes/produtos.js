@@ -47,8 +47,11 @@ router.post('/add', function(req, res){
     done();
     if (err){
       console.log(err);
+      res.send('Erro ao adicionar Usuario ao Banco de Dados');
+    }else{
+     res.redirect('/produtos/listprodutos');
+     console.log('Usuario ' + nome + ' Adicionado ao Banco de Dados');
     }
-    res.redirect('https://managelyt.herokuapp.com/produtos/listprodutos');
   });
  });  
 });
