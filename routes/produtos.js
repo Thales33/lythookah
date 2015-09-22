@@ -48,7 +48,7 @@ router.post('/add', function(req, res){
     if (err){
       console.log(err);
     }
-    res.redirect('produtos/listprodutos');
+    res.redirect('https://managelyt.herokuapp.com/produtos/listprodutos');
   });
  });  
 });
