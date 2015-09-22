@@ -4,17 +4,17 @@ block content
     h1= title
     div(class="form-group")
         form#formEditaProduto(name="editaproduto",method="post",action="/produtos/editarProdutos")
-            input#inputProdutoDescricao(type="text", class="form-control", placeholder="Descrição", name="descricao")
+            input#inputProdutoDescricao(type="text", class="form-control", placeholder="Descrição", name="descricao", value="#{produtos[0].descricao}")
             br
-            input#inputProdutoPrecoCusto(type="text", class="form-control", placeholder="Preco de Custo", name="precoCusto")
+            input#inputProdutoPrecoCusto(type="text", class="form-control", placeholder="Preco de Custo", name="precoCusto", value="#{produtos[0].precocusto}")
             br
-            input#inputProdutoPrecoVenda(type="text", class="form-control", placeholder="Preço de Venda", name="precoVenda")
+            input#inputProdutoPrecoVenda(type="text", class="form-control", placeholder="Preço de Venda", name="precoVenda", value="#{produtos[0].precovenda}")
             br
-            input#inputProdutoTipo(type="text", class="form-control", placeholder="Tipo", name="tipo")
+            input#inputProdutoTipo(type="text", class="form-control", placeholder="Tipo", name="tipo", value="#{produtos[0].tipo}")
             br
-            input#inputProdutoMarca(type="text", class="form-control", placeholder="Marca", name="marca")
+            input#inputProdutoMarca(type="text", class="form-control", placeholder="Marca", name="marca", value="#{produtos[0].marca}")
             br
-            input#inputOngId(type="text", name="idproduto", style="display:none;" value="#{produtos[0].id}")
+            input#inputOngId(type="text", name="idproduto", style="display:none;", value="#{produtos[0].id}")
             
             
             button#btnSubmit(type="submit", class="btn btn-primary") Editar

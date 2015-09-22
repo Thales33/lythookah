@@ -57,12 +57,14 @@ router.post('/add', function(req, res){
 
 router.get('/editar/:id', function(req, res) {
 
-  var id = req.body.id;
+  var id = req.params.id;
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
    client.query('SELECT * FROM PRODUTOS WHERE id = $1',[id], function(err, result) {
       done();
       if (err){
       console.log(err);
+      console.log("ERRO" +err);
+
       }
 
       res.render('produtos/editarProdutos',{
