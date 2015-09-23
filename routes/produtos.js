@@ -31,12 +31,26 @@ router.get('/listprodutos', function(req, res) {
   
 
 router.get('/addProduto', function(req,res){
-  res.render('produtos/addProduto', {title: 'Cadastrar Novo Produto'});
+  pg.connect(process.env.DATABASE_URL, function(err, client, done){
+    client.query('SELECT * FROM marca', function(err, retorno) { 
+     if (err){
+      console.log(err);
+     }
+    client.query('SELECT * FROM tipo', function(err, resultados) { 
+      done();
+    if (err){
+      console.log(err);
+    }
+
+    res.render('produtos/addProduto', {
+    	title: 'Cadastrar Novo Produto',
+        marcas: retorno,
+        tipos : resultados});
 });
 
 
 router.post('/add', function(req, res){
-  var id = req.body.id;
+  var id = req.body.id;|
   var descricao = req.body.descricao;
   var precocusto = req.body.precocusto;
   var precovenda = req.body.precovenda;
