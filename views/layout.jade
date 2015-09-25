@@ -2,17 +2,19 @@ doctype html
 html
   head
     title= title
-    meta(charset='UTF-8')   
-    script(src='http://code.jquery.com/jquery-1.9.1.min.js')
-    script(src='/bootstrap/js/bootstrap.js', type='text/javascript')     
-    link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')        
+    meta(charset='UTF-8', content='width=device-width, inicial-scale=1.0')   
+    script(src='http://code.jquery.com/jquery-latest.js')
+    script(src='/bootstrap/js/bootstrap.js', type='text/javascript') 
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')    
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.css')
+         
   body
     nav(class="navbar navbar-inverse navbar-fixed-top" role="navigation")
         .container
             .navbar-header
                 button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bar1')
-                    span.sr-only Toogle navigation
+                    span.sr-only 
                     
                     span.icon-bar
                     
