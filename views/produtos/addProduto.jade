@@ -2,52 +2,24 @@ extends ../layout
 
 block content
     h1= title
-    form.form-horizontal(name="addproduto",method="post",action="/produtos/add")
-    fieldset
+    form(name="addproduto",method="post",action="/produtos/add")
         // Form Name
         legend Cadastrar Novo Produto
         // Text input
-        .form-group
-          label.col-md-4.control-label(for='id') ID        
-          .col-md-4
-            input#id.form-control.input-md(name='id', type='text', placeholder='Ex.: 1; 2; 3; 54', required='')
-           br   
+        input#id.form-control.input-md(name='id', type='text', placeholder='Ex.: 1; 2; 3; 54', required='')
         // Text input
-        .form-group
-          label.col-md-4.control-label(for='descricao') Descri&ccedil;&atilde;o
-          .col-md-5
-            input#descricao.form-control.input-md(name='descricao', type='text', placeholder='Ex.: BlueBerry ; Carvão de coco 1k', required='')
-          br
+        input#descricao.form-control.input-md(name='descricao', type='text', placeholder='Ex.: BlueBerry ; Carvão de coco 1k', required='')
         // Text input
-        .form-group
-          label.col-md-4.control-label(for='precocusto') Pre&ccedil;o Custo
-          .col-md-4
-            input#precocusto.form-control.input-md(name='precocusto', type='text', placeholder='Ex.: 11.99', required='')
-          br
+        input#precocusto.form-control.input-md(name='precocusto', type='text', placeholder='Ex.: 11.99', required='')
         // Text input
-        .form-group
-          label.col-md-4.control-label(for='precovenda') Pre&ccedil;o Venda
-          .col-md-4
-            input#precovenda.form-control.input-md(name='precovenda', type='text', placeholder='EX.: 99.99', required='')
-          br
+        input#precovenda.form-control.input-md(name='precovenda', type='text', placeholder='EX.: 99.99', required='')
         // Select Basic
-        .form-group
-          label.col-md-4.control-label(for='tipo') Tipo
-          .col-md-4
-            select#tipo.form-control(name='tipo')
+        select#tipo.form-control(name='tipo')
              each tipo, i in tipos.rows
               option(value="#{tipo.id}") #{tipo.descricao}
-          br
         // Select Basic
-        .form-group
-          label.col-md-4.control-label(for='marca') Marca
-          .col-md-4
-            select#marca.form-control(name='marca')
+        select#marca.form-control(name='marca')
              each marca, i in marcas.rows
               option(value="#{marca.id}") #{marca.nome}
-          br
         // Button
-        .form-group
-          label.col-md-4.control-label(for='')
-          .col-md-4
-            button.btn.btn-primary(type='submit') Cadastrar
+        button.btn.btn-primary(type='submit') Cadastrar
