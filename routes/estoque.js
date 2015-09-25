@@ -42,8 +42,8 @@ router.get('/atualiza', function(req,res){
  });
 
 router.post('/atuestoque', function(req, res){
-  codproduto: req.body.produto,
-  quantidade: req.body.quantidade
+  codproduto = req.body.produto,
+  quantidade = req.body.quantidade
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
     client.query('INSERT INTO estoque (idprodutos,quantidade) VALUES ($1,$2)', [codproduto, quantidade], function(err, result) {
