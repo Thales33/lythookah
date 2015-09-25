@@ -16,7 +16,9 @@ router.get('/', function(req, res, next) {
 
 router.get('/listprodutos', function(req, res) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT * FROM PRODUTOS', function(err, result) { 
+    client.query('SELECT p.idprodutos, p.descricao, p.precocusto, p.precovenda, m.nome, t.descricao  FROM PRODUTOS as p 
+      inner join marca as m on (p.idmarca = m.idmarca)
+      inner join tipo as t on (p.idtipo = t.idtipo)', function(err, result) { 
       done();
     if (err){
       console.log(err);
@@ -46,6 +48,9 @@ router.get('/addProduto', function(req,res){
     	title: 'Cadastrar Novo Produto',
         marcas: retorno,
         tipos : resultados});
+   });
+  });
+ });
 });
 
 
@@ -96,8 +101,8 @@ router.get('/editar/:id', function(req, res) {
     });
    });
   });
+ });
 });
-
 
 router.post('/editarProdutos', function(req,res){
     var idproduto = req.body.idproduto;
