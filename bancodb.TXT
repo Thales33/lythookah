@@ -1,0 +1,34 @@
+﻿CREATE TABLE Tipo (  idTipo SERIAL   NOT NULL ,  descricao VARCHAR(45),PRIMARY KEY(idTipo));
+
+
+
+
+CREATE TABLE Marca (  idMarca SERIAL   NOT NULL , nome VARCHAR(45) ,PRIMARY KEY(idMarca));
+
+
+
+
+CREATE TABLE Produtos (  idProdutos SERIAL   NOT NULL ,  idMarca Integer NOT NULL ,  idTipo INTEGER NOT NULL ,  descricao VARCHAR(45)   NOT NULL ,  precoCusto MONEY   NOT NULL ,  precoVenda MONEY   NOT NULL  ,PRIMARY KEY(idProdutos) , FOREIGN KEY(idTipo) REFERENCES Tipo(idTipo), FOREIGN KEY(idMarca) REFERENCES Marca(idMarca));
+
+
+CREATE INDEX Secondary1 ON Produtos (idTipo);CREATE INDEX Secondary2 ON Produtos (idMarca);
+
+
+CREATE INDEX IFK_produto_tem1 ON Produtos (idTipo);CREATE INDEX IFK_produto_tem2 ON Produtos (idMarca);
+
+
+CREATE TABLE Venda (  idVenda SERIAL   NOT NULL ,  idProdutos INTEGER NOT NULL ,  quantidade INTEGER  ,  precoVenda MONEY  ,  precoTotal MONEY  ,PRIMARY KEY(idVenda)  ,  FOREIGN KEY(idProdutos) REFERENCES Produtos(idProdutos));
+
+
+CREATE INDEX Secondary3 ON Venda (idProdutos);CREATE INDEX IFK_Venda_tem  ON Venda (idProdutos);
+
+
+CREATE TABLE Estoque (  idEstoque SERIAL   NOT NULL ,  idMarca INTEGER NOT NULL ,  idProdutos INTEGER NOT NULL ,  quantidade INTEGER ,PRIMARY KEY(idEstoque) , FOREIGN KEY(idProdutos)    REFERENCES Produtos(idProdutos),  FOREIGN KEY(idMarca)  REFERENCES Marca(idMarca));
+
+
+CREATE INDEX Secondary4 ON Estoque (idProdutos);CREATE INDEX secondary5 ON Estoque (idMarca);
+
+
+CREATE INDEX IFK_Estoque_TEM ON Estoque (idProdutos);CREATE INDEX IFK_Estoque_tem2 ON Estoque (idMarca);
+
+

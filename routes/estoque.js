@@ -28,17 +28,21 @@ router.get('/listestoque', function(req, res) {
 
 
 router.get('/atualiza', function(req,res){
+  pg.connect(process.env.DATABASE_URL, function(err, client, done){
+    client.query('SELECT p.descricao, m.nome FROM produtos p inner join marca m on (p.idmarca = m.marca)', function(err, retorno) { 
+     if (err){
+      console.log(err);
+     }
   res.render('estoque/atuEstoque', {title: 'Atualiza Estoque'});
 });
 
 
-router.post('/atualiza', function(req, res){
-  var retorno = {tipo: req.body.tipo,
-                 codproduto: req.body.codproduto,
-                 quantidade: req.body.quantidade}
+router.post('/atuestoque', function(req, res){
+  codproduto: req.body.produto,
+  quantidade: req.body.quantidade
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('INSERT INTO estoque (tipo,codproduto,quantidade) VALUES ($1,$2,$3)', [retorno.tipo, retorno.codproduto, retorno.quantidade], function(err, result) {
+    client.query('INSERT INTO estoque (idprodutos,quantidade) VALUES ($1,$2)', [codproduto, quantidade], function(err, result) {
     done();
     if (err){
       console.log(err);
