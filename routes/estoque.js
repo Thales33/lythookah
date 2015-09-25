@@ -33,9 +33,13 @@ router.get('/atualiza', function(req,res){
      if (err){
       console.log(err);
      }
-  res.render('estoque/atuEstoque', {title: 'Atualiza Estoque'});
-});
-
+  res.render('estoque/atuEstoque', {
+    title: 'Atualiza Estoque',
+    produtos : retorno
+    });
+   });
+  });
+ });
 
 router.post('/atuestoque', function(req, res){
   codproduto: req.body.produto,
