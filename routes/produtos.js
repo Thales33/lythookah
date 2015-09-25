@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
   res.render('produtos/homeprodutos', {
     title: 'Produtos - LYT Hookah',
     subtitle: 'Produtos'
-  })
+  });
 });
 
 router.get('/listprodutos', function(req, res) {
@@ -95,7 +95,7 @@ router.get('/editar/:id', function(req, res) {
       produtos : result,
       title: 'Editar Produto',
       marcas: retorno,
-      tipos : resultados
+      tipos : resultados });
     });
    });
   });
