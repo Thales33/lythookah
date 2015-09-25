@@ -59,7 +59,7 @@ router.post('/add', function(req, res){
   var tipo = req.body.tipo;
   var marca = req.body.marca;
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('INSERT INTO PRODUTOS (descricao,precocusto,precovenda,idtipo,idmarca) VALUES ($1,$2,$3,$4,$5)', [descricao, precocusto, precovenda, tipo, marca], function(err, result) {
+    client.query('INSERT INTO PRODUTOS (idmarca,idtipo,descricao,precocusto,precovenda) VALUES ($1,$2,$3,$4,$5)', [marca,tipo,descricao,precocusto, precovenda], function(err, result) {
     done();
     if (err){
       console.log(err);
