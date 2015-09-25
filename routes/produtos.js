@@ -50,14 +50,13 @@ router.get('/addProduto', function(req,res){
 
 
 router.post('/add', function(req, res){
-  var id = req.body.id;|
   var descricao = req.body.descricao;
   var precocusto = req.body.precocusto;
   var precovenda = req.body.precovenda;
   var tipo = req.body.tipo;
   var marca = req.body.marca;
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('INSERT INTO PRODUTOS (id, descricao,precocusto,precovenda,tipo,marca) VALUES ($1,$2,$3,$4,$5,$6)', [id, descricao, precocusto, precovenda, tipo, marca], function(err, result) {
+    client.query('INSERT INTO PRODUTOS (descricao,precocusto,precovenda,idtipo,idmarca) VALUES ($1,$2,$3,$4,$5)', [descricao, precocusto, precovenda, tipo, marca], function(err, result) {
     done();
     if (err){
       console.log(err);
@@ -73,7 +72,15 @@ router.get('/editar/:id', function(req, res) {
 
   var id = req.params.id;
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-   client.query('SELECT * FROM PRODUTOS WHERE id = $1',[id], function(err, result) {
+  	client.query('SELECT * FROM marca', function(err, retorno) { 
+     if (err){
+      console.log(err);
+     }
+    client.query('SELECT * FROM tipo', function(err, resultados) { 
+     if (err){
+      console.log(err);
+     }
+    client.query('SELECT * FROM PRODUTOS WHERE id = $1',[id], function(err, result) {
       done();
       if (err){
       console.log(err);
@@ -83,7 +90,9 @@ router.get('/editar/:id', function(req, res) {
 
       res.render('produtos/editarProdutos',{
       produtos : result,
-      title: 'Editar Produto'
+      title: 'Editar Produto',
+      marcas: retorno,
+      tipos : resultados
     });
    });
   });
@@ -99,7 +108,7 @@ router.post('/editarProdutos', function(req,res){
   var marca = req.body.marca;
 
 pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('UPDATE PRODUTOS SET descricao = ($1), precocusto = ($2),precovenda = ($3),tipo = ($4), marca = ($5) WHERE id = $6', [descricao, precocusto, precovenda, tipo, marca, idproduto], function(err, result) {
+   client.query('UPDATE PRODUTOS SET descricao = ($1), precocusto = ($2),precovenda = ($3),idtipo = ($4), idmarca = ($5) WHERE id = $6', [descricao, precocusto, precovenda, tipo, marca, idproduto], function(err, result) {
     done();
     if (err){
       console.log(err);
