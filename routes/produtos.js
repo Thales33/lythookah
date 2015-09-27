@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/listprodutos', function(req, res) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT p.idprodutos, p.descricao, p.precocusto, p.precovenda, m.nome, t.descricao  FROM PRODUTOS as p inner join marca as m on (p.idmarca = m.idmarca) inner join tipo as t on (p.idtipo = t.idtipo)', function(err, result) { 
+    client.query('SELECT p.idprodutos, p.descricao, p.precocusto, p.precovenda, m.nome as mnome, t.descricao as tdescricao  FROM PRODUTOS as p inner join marca as m on (p.idmarca = m.idmarca) inner join tipo as t on (p.idtipo = t.idtipo)', function(err, result) { 
       done();
     if (err){
       console.log(err);

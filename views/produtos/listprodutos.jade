@@ -19,18 +19,18 @@ block content
             tbody
             each produto, i in produtos.rows
                 tr
-                    td  #{produto.id}
+                    td  #{produto.idprodutos}
                     td  #{produto.descricao}
                     td  #{produto.precocusto}
                     td  #{produto.precovenda}
-                    td  #{produto.tipo}
-                    td  #{produto.marca}
+                    td  #{produto.tdescricao}
+                    td  #{produto.mnome}
                     td 
-                        a(href="/produtos/editar/#{produto.id}")
+                        a(href="/produtos/editar/#{produto.idprodutos}")
                             button(type='button', class='btn btn-warning btn-sm')
                                 span(class='glyphicon glyphicon-edit') Editar
                          space
-                        a(href="/produtos/delete/#{produto.id}")
+                        a(href="/produtos/delete/#{produto.idprodutos}")
                             button(type='button', class='btn btn-danger btn-sm')
                                 span(class='glyphicon glyphicon-remove' aria-hidden="true") Deletar
                
