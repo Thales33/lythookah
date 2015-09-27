@@ -4,18 +4,18 @@ block content
     h1= title
     div(class="form-group")
         form(name="atuestoque",method="post",action="/estoque/atuestoque")
-        // Select Basic
-        select#tipo.form-control(name='produto')
+          // Select Basic
+          select#tipo.form-control(name='produto')
              each produto, i in produtos.rows
               option(value="#{produto.idprodutos}") #{produto.descricao}
-        br
-        // Select Basic
-        select#tipo.form-control(name='marca')
+          br
+          // Select Basic
+          select#tipo.form-control(name='marca')
              each produto, i in produtos.rows
               option(value="") #{produtos.rows[i].nome}
-        br
-        // Text input
-        input#quantidade.form-control.input-md(name='quantidade', type='text', placeholder='Ex.: 1; 3; 10', required='')
-        br
-        // Button
-        button.btn.btn-primary(type='submit') Cadastrar
+          br
+          // Text input
+          input#quantidade.form-control.input-md(name='quantidade', type='text', placeholder='Ex.: 1; 3; 10', required='')
+          br
+          // Button
+          button.btn.btn-primary(type='submit') Cadastrar
