@@ -15,12 +15,12 @@ block content
         // Select Basic
         select#tipo.form-control(name='tipo')
              each tipo, i in tipos.rows
-              option(value="#{tipo.id}") #{tipo.descricao}
+              option(value="#{tipo.idtipo}") #{tipo.descricao}
         br
         // Select Basic
         select#marca.form-control(name='marca')
              each marca, i in marcas.rows
-              option(value="#{marca.id}") #{marca.nome}
+              option(value="#{marca.idmarca}") #{marca.nome}
         br
         // Button
         button.btn.btn-primary(type='submit') Cadastrar
