@@ -13,13 +13,13 @@ router.get('/', function(req, res, next) {
 
 router.get('/listestoque', function(req, res) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT * FROM estoque', function(err, result) { 
+    client.query('SELECT distinct (p.idprodutos), p.descricao, m.nome as mnome, sum(e.quantidade) as quantidade FROM produtos p inner join marca m on p.idmarca = m.idmarca inner join estoque e on p.idprodutos = e.idprodutos', function(err, result) { 
       done();
     if (err){
       console.log(err);
     }
     res.render('estoque/listestoque', {
-      estoque: result,
+      estoques: result,
         title: 'estoque - LYT Hookah'});
     });
   });
