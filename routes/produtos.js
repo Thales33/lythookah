@@ -83,7 +83,7 @@ router.get('/editar/:id', function(req, res) {
      if (err){
       console.log(err);
      }
-    client.query('SELECT * FROM PRODUTOS WHERE id = $1',[id], function(err, result) {
+    client.query('SELECT * FROM PRODUTOS WHERE idprodutos = $1',[id], function(err, result) {
       done();
       if (err){
       console.log(err);
@@ -111,7 +111,7 @@ router.post('/editarProdutos', function(req,res){
   var marca = req.body.marca;
 
 pg.connect(process.env.DATABASE_URL, function(err, client, done){
-   client.query('UPDATE PRODUTOS SET descricao = ($1), precocusto = ($2),precovenda = ($3),idtipo = ($4), idmarca = ($5) WHERE id = $6', [descricao, precocusto, precovenda, tipo, marca, idproduto], function(err, result) {
+   client.query('UPDATE PRODUTOS SET descricao = ($1), precocusto = ($2),precovenda = ($3),idtipo = ($4), idmarca = ($5) WHERE idprodutos = $6', [descricao, precocusto, precovenda, tipo, marca, idproduto], function(err, result) {
     done();
     if (err){
       console.log(err);
