@@ -9,23 +9,17 @@ block content
         table(class='table')
             thead
                 tr
-                th ID
-                td Descrição             
-                td PreçoCusto    
-                td PreçoVenda  
-                td Tipo
-                td Marca
-                td Ação  
+                td Produto             
+                td Marca    
+                td Quantidade   
             tbody
-            each produto, i in produtos.rows
+            each estoque, i in estoques.rows
                 tr
-                    td  #{produto.id}
-                    td  #{produto.descricao}
-                    td  #{produto.precoCusto}
-                    td  #{produto.precoVenda}
-                    td  #{produto.tipo}
-                    td  #{produto.marca}
-                    td 
+                    //td  #{.id}
+                    td  #{estoque.pdescricao}
+                    td  #{estoque.mnome}
+                    td  #{estoque.quantidade}
+                  //td 
                         a(href="/produtos/editar/#{produto.id}")
                             button(type='button', class='btn btn-warning btn-sm')
                                 span(class='glyphicon glyphicon-edit') Editar
