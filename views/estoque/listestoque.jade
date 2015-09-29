@@ -15,16 +15,16 @@ block content
             tbody
             each estoque, i in estoques.rows
                 tr
-                    //td  #{.id}
+                    //
                     td  #{estoque.pdescricao}
                     td  #{estoque.mnome}
                     td  #{estoque.quantidade}
                   //td 
-                        a(href="/produtos/editar/#{produto.id}")
+                        a(href="/produtos/editar/{produto.id}")
                             button(type='button', class='btn btn-warning btn-sm')
                                 span(class='glyphicon glyphicon-edit') Editar
                          space
-                        a(href="/produtos/delete/#{produto.id}")
+                        a(href="/produtos/delete/{produto.id}")
                             button(type='button', class='btn btn-danger btn-sm')
                                 span(class='glyphicon glyphicon-remove' aria-hidden="true") Deletar
                
