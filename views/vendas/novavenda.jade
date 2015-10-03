@@ -6,7 +6,7 @@ block content
         |Produto
         select#tipo.form-control(name='produto')
              each produto, i in produtos.rows
-              option(value="#{estoque.idprodutos}") #{estoque.descricao}
+              option(value="#{estoque.idprodutos}")#{estoque.descricao}
         br
         // Text input
         | Quantidade
@@ -14,7 +14,7 @@ block content
         br
         // Text input
         |Preço de Venda
-        input#precovenda.form-control.input-md(name='precovenda', type='text', value='#{estoque.precovenda}') #{estoque.precovenda}
+        input#precovenda.form-control.input-md(name='precovenda', type='text', value='#{estoque.precovenda}')#{estoque.precovenda}
         br
             // Text input
         |Preço Total
