@@ -26,7 +26,7 @@ router.get('/listvendas', function(req, res) {
     if (err){
       console.log(err);
     }
-    res.render('venda/listvendas', {
+    res.render('vendas/listvendas', {
       venda: result,
         title: 'Vendas - LYT Hookah'});
     });
@@ -42,7 +42,7 @@ router.get('/novaVenda', function(req,res){
     if (err){
       console.log(err);
     }
-  res.render('venda/novavenda', {
+  res.render('vendas/novavenda', {
     title: 'Nova Venda',
     estoque: result});
   });
@@ -62,7 +62,7 @@ router.post('/novaVenda', function(req, res){
     if (err){
       console.log(err);
     }
-    res.redirect('/venda/listvenda');
+    res.redirect('/vendas/listvenda');
 
   });
  });
@@ -79,7 +79,7 @@ router.get('/editar/:id', function(req, res) {
       console.log(err);
       }
 
-    res.render('venda/editarvenda',{
+    res.render('vendas/editarvenda',{
       venda : result,
       title: 'Editar Produto'
     });
@@ -100,7 +100,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done){
     if (err){
       console.log(err);
     }
-    res.redirect('/venda/listvenda');
+    res.redirect('/vendas/listvenda');
   });
  });
 });
@@ -113,7 +113,7 @@ router.get('/delete/:id',function(req,res){
         if(err){
             console.log(err);
         }           
-        res.redirect('/venda/listvenda');
+        res.redirect('/vendas/listvenda');
         console.log('Deletado com sucesso!');
         
       }); 
