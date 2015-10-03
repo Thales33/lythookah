@@ -5,7 +5,7 @@ block content
     form(name="novaVenda",method="post",action="/vendas/add")
         |Produto
         select#tipo.form-control(name='produto')
-             each produto, i in produtos.rows
+             each estoque, i in estoques.rows
               option(value="#{estoque.idprodutos}") #{estoque.descricao}
         br
         // Text input
@@ -18,7 +18,7 @@ block content
         br
         // Text input
         |Preço Total
-        input#precototal.form-control.input-md(name='precototal', type='text',readonly='readonly') 
+        input#precototal.form-control.input-md(name='precototal', type='text', readonly='readonly') 
         br
         // Button
         button.btn.btn-primary(type='submit') Cadastrar
