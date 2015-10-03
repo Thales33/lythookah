@@ -44,7 +44,7 @@ router.get('/novaVenda', function(req,res){
     }
   res.render('vendas/novavenda', {
     title: 'Nova Venda',
-    estoque: result});
+    estoques: result});
   });
  });
 });
