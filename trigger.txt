@@ -1,0 +1,1 @@
+CREATE OR REPLACE FUNCTION fn_venda_trigger() RETURNS Trigger AS $BODY$ DECLARE quantidadeatu integer; BEGIN quantidadeatu = -1*NEW.quantidade; INSERT INTO estoque(idprodutos,quantidade) VALUES (NEW.idprodutos,quantiadadeatu); END; $BODY$ LANGUAGE plpgsql;CREATE TRIGGER venda_trigger AFTER INSERT on venda FOR EACH ROW EXECUTE PROCEDURE fn_venda_trigger();

@@ -10,15 +10,15 @@ block content
         br
         // Text input
         | Quantidade
-        input#quantidade.form-control.input-md(name='quantidade', id='quantidade', type='text', required='')
+        input#quantidade.form-control.input-md(name='quantidade', type='text', required='')
         br
         // Text input
         |Preço de Venda
-        input#precovenda.form-control.input-md(name='precovenda', id='precovenda', type='text', value='#{estoque.precovenda}') #{produto.precovenda}
+        input#precovenda.form-control.input-md(name='precovenda', type='text', value='#{estoque.precovenda}') #{produto.precovenda}
         br
             // Text input
         |Preço Total
-        input#precototal.form-control.input-md(name='precototal', id='precototal', type='text',readonly='readonly') 
+        input#precototal.form-control.input-md(name='precototal', type='text',readonly='readonly') 
         br
         // Button
         button.btn.btn-primary(type='submit') Cadastrar
