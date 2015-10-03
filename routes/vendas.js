@@ -6,7 +6,7 @@ var pg = require('pg');
 
 router.get('/', function(req, res, next) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT p.descricao, e.idprodutos, p.precovenda FROM produtos p inner join estoque e on (p.idprodutos = e.idpreodutos)', function(err, retorno) { 
+    client.query('SELECT p.descricao, e.idprodutos, p.precovenda FROM produtos p inner join estoque e on (p.idprodutos = e.idprodutos)', function(err, retorno) { 
      if (err){
       console.log(err);
      }
@@ -37,12 +37,12 @@ router.get('/listvendas', function(req, res) {
 
 router.get('/novaVenda', function(req,res){
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT * FROM vendas', function(err, result) { 
+    client.query('SELECT p.descricao, e.idprodutos, p.precovenda FROM produtos p inner join estoque e on (p.idprodutos = e.idprodutos)', function(err, result) { 
       done();
     if (err){
       console.log(err);
     }
-  res.render('venda/novaVenda', {
+  res.render('venda/novavenda', {
     title: 'Nova Venda',
     estoque: retono});
   });
