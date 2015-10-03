@@ -5,10 +5,18 @@ var pg = require('pg');
 
 
 router.get('/', function(req, res, next) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done){
+    client.query('SELECT p.descricao, e.idprodutos, p.precovenda FROM produtos p inner join estoque e on (p.idprodutos = e.idpreodutos)', function(err, retorno) { 
+     if (err){
+      console.log(err);
+     }
   res.render('vendas/homevendas', {
     title: 'Vendas - LYT Hookah',
-    subtitle: 'Vendas'
-  })
+    subtitle: 'Vendas',
+    estoque: retorno
+   });
+  });
+ });
 });
 
 router.get('/listvendas', function(req, res) {
@@ -28,8 +36,19 @@ router.get('/listvendas', function(req, res) {
 
 
 router.get('/novaVenda', function(req,res){
-  res.render('venda/novaVenda', {title: 'Nova Venda'});
+  pg.connect(process.env.DATABASE_URL, function(err, client, done){
+    client.query('SELECT * FROM vendas', function(err, result) { 
+      done();
+    if (err){
+      console.log(err);
+    }
+  res.render('venda/novaVenda', {
+    title: 'Nova Venda',
+    estoque: retono});
+  });
+ });
 });
+
 
 
 router.post('/novaVenda', function(req, res){
