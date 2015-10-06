@@ -42,7 +42,7 @@ router.get('/novaVenda', function(req,res){
     if (err){
       console.log(err);
     }
-  res.render('vendas/novavenda', {
+    res.render('vendas/novavenda', {
     title: 'Nova Venda',
     estoques: result});
   });
