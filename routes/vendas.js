@@ -37,7 +37,7 @@ router.get('/listvendas', function(req, res) {
 
 router.get('/novaVenda', function(req,res){
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT p.descricao, e.idprodutos, p.precovenda FROM produtos p inner join estoque e on (p.idprodutos = e.idprodutos)', function(err, result) { 
+    client.query('SELECT e.idprodutos, p.descricao, p.precovenda FROM produtos p inner join estoque e on (p.idprodutos = e.idprodutos) group by e.idprodutos, p.descricao, p.precovenda', function(err, result) { 
       done();
     if (err){
       console.log(err);
