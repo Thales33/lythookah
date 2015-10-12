@@ -51,13 +51,14 @@ router.get('/novaVenda', function(req,res){
 
 
 
-router.post('/novaVenda', function(req, res){
-  var retorno = {codproduto: req.body.codproduto,
-                 quantidade: req.body.quantidade,
-                 valorTotal: req.body.valorTotal}
+router.post('/add', function(req, res){
+  var codproduto = req.body.codproduto;
+  var quantidade = req.body.quantidade;
+  var precovenda = req.body.precovenda;
+  var precototal = quantidade * precovenda;
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('INSERT INTO venda (tipo,codproduto,quantidade) VALUES ($1,$2,$3)', [retorno.tipo, retorno.codproduto, retorno.quantidade], function(err, result) {
+    client.query('INSERT INTO venda (idprodutos,quantidade,precovenda,precototal) VALUES ($1,$2,$3,$4)', [codproduto,quantidade,precovenda,precototal], function(err, result) {
     done();
     if (err){
       console.log(err);
