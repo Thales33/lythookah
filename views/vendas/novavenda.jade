@@ -5,7 +5,7 @@ block content
     div(class="form-group")
         form(name="novavenda",method="post",action="/vendas/add")
           // Select Basic
-          select#tipo.form-control(name='codproduto')
+          select#codproduto.form-control(name='codproduto')
              each estoque, i in estoques.rows
               option(value="#{estoque.idprodutos}") #{estoque.descricao}
           br
