@@ -9,13 +9,13 @@ block content
              each estoque, i in estoques.rows
               option(value="#{estoque.idprodutos}") #{estoque.descricao}
               // Text input
-              input#precovenda.form-control.input-md(name='precovenda', type='text', required='', value="#{estoques.rows[]}") #{estoques.rows[codproduto]}
+              input#precovenda.form-control.input-md(name='precovenda', type='text', required='', value="#{estoques.rows[i]}") #{estoques.rows[i]}
               br
           // Text input
-          input#precovenda.form-control.input-md(name='quantidade', type='text', required='')
+          input#quantidade.form-control.input-md(name='quantidade', type='text', required='', value="0")
           br
           // Text input
-          input#precototal.form-control.input-md(name='precototal', type='text', required='')
+          input#precototal.form-control.input-md(name='precototal', type='text', required='', readonly="readonly")
           br
           // Button
           button.btn.btn-primary(type='submit') Cadastrar
