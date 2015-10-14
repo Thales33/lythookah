@@ -5,17 +5,21 @@ block content
     div(class="form-group")
         form(name="novavenda",method="post",action="/vendas/add")
           // Select Basic
+          |Produto
           select#codproduto.form-control(name='codproduto')
              each estoque, i in estoques.rows
               option(value="#{estoque.idprodutos}") #{estoque.descricao}
           br
           // Text input
-          input#precovenda.form-control.input-md(name='precovenda', type='text', required='') 
+          |Preço de Venda
+          input#precovenda.form-control.input-md(name='precovenda', type='text', required='', readonly="readonly") 
           br
           // Text input
+          |Quantidade
           input#quantidade.form-control.input-md(name='quantidade', type='text', required='', value="0")
           br
           // Text input
+          |Preço de Total
           input#precototal.form-control.input-md(name='precototal', type='text', required='', readonly="readonly")
           br
           // Button
@@ -48,3 +52,8 @@ block content
             v = v.replace(/([\\d]+)([\d]{3}),([\d]{2})$/, "$1.$2,$3");
             return v;
             };
+
+            window.onload = function(){
+             var produto = id('codproduto').value;
+             id('precovenda').value = #{estoques.rows[codproduto]};
+            }
