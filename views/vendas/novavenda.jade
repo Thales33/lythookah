@@ -35,7 +35,7 @@ block content
             function precov(){
               var produto = id('codproduto').value;
               id('precovenda').value
-              id('precovenda').value = 'teste'
+              id('precovenda').value = '#{estoques.rows['+produto+']}'    
               return id('precovenda').value = 'teste';
              }
             window.onload = function() {
