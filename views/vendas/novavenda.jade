@@ -8,9 +8,10 @@ block content
           select#codproduto.form-control(name='codproduto')
              each estoque, i in estoques.rows
               option(value="#{estoque.idprodutos}") #{estoque.descricao}
-              // Text input
-              input#precovenda.form-control.input-md(name='precovenda', type='text', required='', value="#{estoques.rows[i]}") #{estoques.rows[i]}
-              br
+          br
+          // Text input
+          input#precovenda.form-control.input-md(name='precovenda', type='text', required='', value="#{estoques.rows[id(codproduto)]}") #{estoques.rows[id(codproduto)]}
+          br
           // Text input
           input#quantidade.form-control.input-md(name='quantidade', type='text', required='', value="0")
           br
