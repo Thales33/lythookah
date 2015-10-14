@@ -6,7 +6,7 @@ block content
         form(name="novavenda",method="post",action="/vendas/add")
           // Select Basic
           |Produto
-          select#codproduto.form-control(name='codproduto', onchange="precov();")
+          select#codproduto.form-control(name='codproduto', onload="precov();")
              each estoque, i in estoques.rows
               option(value="#{estoque.idprodutos}") #{estoque.descricao}
           br
@@ -55,5 +55,5 @@ block content
 
             function precov(){
              var produto = id('codproduto').value;
-             id('precovenda').value = "#{estoques.rows["+produto+"]}";
+             id('precovenda').value = "4,50";
             };
