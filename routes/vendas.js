@@ -27,7 +27,7 @@ router.get('/listvendas', function(req, res) {
       console.log(err);
     }
     res.render('vendas/listvendas', {
-      venda: result,
+      vendas: result,
         title: 'Vendas - LYT Hookah'});
     });
   });
@@ -101,7 +101,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done){
     if (err){
       console.log(err);
     }
-    res.redirect('/vendas/listvenda');
+    res.redirect('/vendas/listvendas');
   });
  });
 });
@@ -114,7 +114,7 @@ router.get('/delete/:id',function(req,res){
         if(err){
             console.log(err);
         }           
-        res.redirect('/vendas/listvenda');
+        res.redirect('/vendas/listvendas');
         console.log('Deletado com sucesso!');
         
       }); 
