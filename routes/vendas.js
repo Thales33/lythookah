@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/listvendas', function(req, res) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT * FROM vendas', function(err, result) { 
+    client.query('SELECT * FROM venda', function(err, result) { 
       done();
     if (err){
       console.log(err);
