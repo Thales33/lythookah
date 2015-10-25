@@ -54,7 +54,7 @@ router.get('/novaVenda', function(req,res){
 router.post('/add', function(req, res){
   var codproduto = req.body.codproduto;
   var quantidade = req.body.quantidade;
-  var qunt = -1*quantidade;
+  var quant = -1*quantidade;
   var precovenda = req.body.precovenda;
   var precototal = req.body.precototal;
 
