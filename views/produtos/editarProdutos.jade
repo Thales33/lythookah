@@ -10,7 +10,7 @@ block content
         br
         // Text input
         |Preço de Custo
-        input#precocusto.form-control.input-md(name='precocusto', type='text', placeholder='Ex.: 11.99', required='',, value="#{produtos.rows[0].precocusto}")
+        input#precocusto.form-control.input-md(name='precocusto', type='text', placeholder='Ex.: 11.99', required='', value="#{produtos.rows[0].precocusto}")
         br
         // Text input
         |Preço de Venda
@@ -28,7 +28,7 @@ block content
              each marca, i in marcas.rows
               option(value="#{marca.idmarca}") #{marca.nome}
         br
-        input#inputOngId(type="text", name="idproduto", style="display:none;", value="#{produtos.rows[0].idprodutos}")
+        input#idproduto(type="text", name="idproduto", style="display:none;", value="#{produtos.rows[0].idprodutos}")
         // Button
         button#btnSubmit(type="submit", class="btn btn-primary") Editar
         
