@@ -6,7 +6,7 @@ block content
         form(name="atuestoque",method="post",action="/estoque/atuestoque")
           // Select Basic
           |Tipo
-          select#tipo.form-control(name='produto')
+          select#produto.form-control(name='produto')
              each produto, i in produtos.rows
               option(value="#{produto.idprodutos}") #{produto.descricao}
 
