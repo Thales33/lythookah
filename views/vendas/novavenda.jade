@@ -7,7 +7,7 @@ block content
           - var cod = ""
           // Select Basic
           |Produto
-          select#codproduto.form-control(name='codproduto', onchange="")
+          select#codproduto.form-control(name='codproduto', onchange="precov()")
              each estoque, i in estoques.rows
               option(value="#{estoque.idprodutos}") #{estoque.descricao}
           br
