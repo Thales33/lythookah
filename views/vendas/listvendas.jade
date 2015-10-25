@@ -11,14 +11,16 @@ block content
                 tr
                 td Produto             
                 td Marca    
-                td Quantidade   
+                td Quantidade
+                td PreçoTotal   
             tbody
-            each estoque, i in estoques.rows
+            each venda, i in vendas.rows
                 tr
                     //
-                    td  #{estoque.pdescricao}
-                    td  #{estoque.mnome}
-                    td  #{estoque.quantidade}
+                    td  #{venda.pdescricao}
+                    td  #{venda.mnome}
+                    td  #{venda.quantidade}
+                    td  #{venda.precototal}
                   //td 
                         a(href="/produtos/editar/{produto.id}")
                             button(type='button', class='btn btn-warning btn-sm')
@@ -28,4 +30,4 @@ block content
                             button(type='button', class='btn btn-danger btn-sm')
                                 span(class='glyphicon glyphicon-remove' aria-hidden="true") Deletar
                
-    a(href="/estoque") Voltar
+    a(href="/vendas") Voltar
