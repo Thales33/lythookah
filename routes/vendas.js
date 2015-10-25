@@ -63,7 +63,7 @@ router.post('/add', function(req, res){
     if (err){
       console.log(err);
     }
-    res.redirect('/vendas/listvenda');
+    res.redirect('/vendas/listvendas');
 
   });
  });
