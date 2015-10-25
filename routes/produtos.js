@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/listprodutos', function(req, res) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT p.idprodutos, p.descricao, p.precocusto, p.precovenda, m.nome as mnome, t.descricao as tdescricao  FROM PRODUTOS as p inner join marca as m on (p.idmarca = m.idmarca) inner join tipo as t on (p.idtipo = t.idtipo)', function(err, result) { 
+    client.query('SELECT p.idprodutos, p.descricao, p.precocusto, p.precovenda, m.nome as mnome, t.descricao as tdescricao  FROM PRODUTOS as p inner join marca as m on (p.idmarca = m.idmarca) inner join tipo as t on (p.idtipo = t.idtipo) order by idprodutos ASC', function(err, result) { 
       done();
     if (err){
       console.log(err);
@@ -103,7 +103,7 @@ router.get('/editar/:id', function(req, res) {
 });
 
 router.post('/editarProdutos', function(req,res){
-    var idproduto = req.body.idproduto;
+  var idproduto = req.body.idproduto;
   var descricao = req.body.descricao;
   var precocusto = req.body.precoCusto;
   var precovenda = req.body.precoVenda;
