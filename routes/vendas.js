@@ -65,12 +65,13 @@ router.post('/add', function(req, res){
     }else {
       client.query('INSERT INTO estoque (idprodutos,quantidade) VALUES ($1,$2)', [codproduto, quantidade], function(err, result) {
     done();
-    if (err){
+     if (err){
       console.log(err);
-    }
-    }
+     }
+    });
+   }
     res.redirect('/vendas/listvendas');
-
+   
   });
  });
 });
