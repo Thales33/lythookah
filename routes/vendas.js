@@ -54,6 +54,7 @@ router.get('/novaVenda', function(req,res){
 router.post('/add', function(req, res){
   var codproduto = req.body.codproduto;
   var quantidade = req.body.quantidade;
+  var qunt = -1*quantidade;
   var precovenda = req.body.precovenda;
   var precototal = req.body.precototal;
 
@@ -63,7 +64,7 @@ router.post('/add', function(req, res){
     if (err){
       console.log(err);
     }else {
-      client.query('INSERT INTO estoque (idprodutos,quantidade) VALUES ($1,$2)', [codproduto, quantidade], function(err, result) {
+      client.query('INSERT INTO estoque (idprodutos,quantidade) VALUES ($1,$2)', [codproduto, quant], function(err, result) {
     done();
      if (err){
       console.log(err);
