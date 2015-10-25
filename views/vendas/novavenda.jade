@@ -7,14 +7,13 @@ block content
           - var cod = ""
           // Select Basic
           |Produto
-          select#codproduto.form-control(name='codproduto', onchange="precov")
+          select#codproduto.form-control(name='codproduto', onchange="")
              each estoque, i in estoques.rows
               option(value="#{estoque.idprodutos}") #{estoque.descricao}
-              cod = i;
           br
           // Text input
           |Preço de Venda
-          input#precovenda.form-control.input-md(name='precovenda', type='text', required='') 
+          input#precovenda.form-control.input-md(name='precovenda', type='text', required='', readonly="readonly") 
           br
           // Text input
           |Quantidade
@@ -35,8 +34,10 @@ block content
               return parseFloat(un.replace(',', '.'), 10) * parseFloat(quantidade.replace(',', '.'), 10);
              }
             function precov(){
-              var venda = "#{estoques.rows["+cod+"]}"    
-              return id('precovenda').value = venda;
+              var produto = id('codproduto').value;
+              id('precovenda').value
+              var vend = id('precovenda').value = '#{estoques.rows['+produto+']}'    
+              return id('precovenda').value = vend;
              }
             window.onload = function() {
               id('precovenda').addEventListener('keyup', function() {
