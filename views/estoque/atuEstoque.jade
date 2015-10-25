@@ -9,12 +9,7 @@ block content
           select#tipo.form-control(name='produto')
              each produto, i in produtos.rows
               option(value="#{produto.idprodutos}") #{produto.descricao}
-          br
-          // Select Basic
-          |Marca
-          select#tipo.form-control(name='marca')
-             each produto, i in produtos.rows
-              option(value="") #{produtos.rows[i].nome}
+
           br
           // Text input
           |Quantidade

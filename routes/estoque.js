@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/listestoque', function(req, res) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT produtos.Descricao as pdescricao, marca.Nome as mnome, Sum(Estoque.quantidade) AS Quantidade FROM (Marca INNER JOIN Produtos ON Marca.idmarca = Produtos.idMarca) INNER JOIN Estoque ON Produtos.idprodutos = Estoque.idprodutos GROUP BY Estoque.idprodutos, Produtos.Descricao, Marca.Nome;', function(err, result) { 
+    client.query('SELECT produtos.Descricao as pdescricao, marca.Nome as mnome, Sum(Estoque.quantidade) AS Quantidade FROM (Marca INNER JOIN Produtos ON Marca.idmarca = Produtos.idMarca) INNER JOIN Estoque ON Produtos.idprodutos = Estoque.idprodutos GROUP BY Estoque.idprodutos, Produtos.Descricao, Marca.Nome order by Estoque.idprodutos ASC', function(err, result) { 
       done();
     if (err){
       console.log(err);
