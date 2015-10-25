@@ -62,6 +62,12 @@ router.post('/add', function(req, res){
     done();
     if (err){
       console.log(err);
+    }else {
+      client.query('INSERT INTO estoque (idprodutos,quantidade) VALUES ($1,$2)', [codproduto, quantidade], function(err, result) {
+    done();
+    if (err){
+      console.log(err);
+    }
     }
     res.redirect('/vendas/listvendas');
 
