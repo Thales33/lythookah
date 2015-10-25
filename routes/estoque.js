@@ -29,7 +29,7 @@ router.get('/listestoque', function(req, res) {
 
 router.get('/atualiza', function(req,res){
   pg.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT p.descricao, p.idprodutos, m.nome FROM produtos p inner join marca m on (p.idmarca = m.idmarca) GROUP by p.descricao, p.idprodutos, m.nome', function(err, retorno) { 
+    client.query('SELECT p.descricao, p.idprodutos, distinct m.nome FROM produtos p inner join marca m on (p.idmarca = m.idmarca) GROUP by p.descricao, p.idprodutos, m.nome order by p.idprodutos ASC', function(err, retorno) { 
      if (err){
       console.log(err);
      }
