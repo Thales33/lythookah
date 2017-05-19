@@ -1,6 +1,6 @@
 ## Synopsis
 
-TESTE
+TESTE 2
 
 ## Code Example
 
