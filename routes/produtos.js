@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var pg = require('pg');
-//process.env.DATABASE_URL
+const {Pool} = require('pg');
+const pool = new Pool({connectionString: process.env.DATABASE_URL,
+ssl: true
+});
 
 
 
@@ -15,7 +17,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/listprodutos', function(req, res) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done){
+  pool.connect( function(err, client, done){
     client.query('SELECT p.idprodutos, p.descricao, p.precocusto, p.precovenda, m.nome as mnome, t.descricao as tdescricao  FROM PRODUTOS as p inner join marca as m on (p.idmarca = m.idmarca) inner join tipo as t on (p.idtipo = t.idtipo) order by idprodutos ASC', function(err, result) { 
       done();
     if (err){
@@ -31,7 +33,7 @@ router.get('/listprodutos', function(req, res) {
   
 
 router.get('/addProduto', function(req,res){
-  pg.connect(process.env.DATABASE_URL, function(err, client, done){
+  pool.connect(function(err, client, done){
     client.query('SELECT * FROM marca', function(err, retorno) { 
      if (err){
       console.log(err);
@@ -58,7 +60,7 @@ router.post('/add', function(req, res){
   var precovenda = req.body.precovenda;
   var tipo = req.body.tipo;
   var marca = req.body.marca;
-  pg.connect(process.env.DATABASE_URL, function(err, client, done){
+  pool.connect(function(err, client, done){
     client.query('INSERT INTO PRODUTOS (idmarca,idtipo,descricao,precocusto,precovenda) VALUES ($1,$2,$3,$4,$5)', [marca,tipo,descricao,precocusto, precovenda], function(err, result) {
     done();
     if (err){
@@ -74,7 +76,7 @@ router.post('/add', function(req, res){
 router.get('/editar/:id', function(req, res) {
 
   var id = req.params.id;
-  pg.connect(process.env.DATABASE_URL, function(err, client, done){
+  pool.connect(function(err, client, done){
   	client.query('SELECT * FROM marca', function(err, retorno) { 
      if (err){
       console.log(err);
@@ -110,7 +112,7 @@ router.post('/editarProdutos', function(req,res){
   var tipo = req.body.tipo;
   var marca = req.body.marca;
 
-pg.connect(process.env.DATABASE_URL, function(err, client, done){
+pool.connect(function(err, client, done){
    client.query('UPDATE PRODUTOS SET descricao = ($1), precocusto = ($2),precovenda = ($3),idtipo = ($4), idmarca = ($5) WHERE idprodutos = $6', [descricao, precocusto, precovenda, tipo, marca, idproduto], function(err, result) {
     done();
     if (err){
@@ -124,7 +126,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done){
 router.get('/delete/:id',function(req,res){
     
     var id = req.params.id;    
-  pg.connect(process.env.DATABASE_URL, function(err, client, done){
+  pool.connect(function(err, client, done){
     client.query("DELETE FROM PRODUTOS WHERE id = $1",[id],function(err){
       done();
         if(err){
