@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const {Pool} = require('pg');
-const pool = new Pool({connectionString: process.env.DATABASE_URL,
+var {Pool} = require('pg');
+var pool = new Pool({connectionString: process.env.DATABASE_URL,
 ssl: true
 });
 
@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/listprodutos', function(req, res) {
-  pool.connect( function(err, client, done){
+  pool.connect(function(err, client, done){
     client.query('SELECT p.idprodutos, p.descricao, p.precocusto, p.precovenda, m.nome as mnome, t.descricao as tdescricao  FROM PRODUTOS as p inner join marca as m on (p.idmarca = m.idmarca) inner join tipo as t on (p.idtipo = t.idtipo) order by idprodutos ASC', function(err, result) { 
       done();
     if (err){
